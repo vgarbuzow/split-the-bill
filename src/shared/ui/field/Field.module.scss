@@ -1,0 +1,49 @@
+.field {
+  position: relative;
+
+  &:has(.input:not(:placeholder-shown)) .label {
+    scale: 0.7;
+    translate: -2.8em -2.6em;
+  }
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 17px;
+  color: var(--color-gray);
+  translate: 0 -50%;
+  font-size: 20px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.input {
+  height: 50px;
+  border-radius: 8px;
+  border-color: var(--color-gray);
+  border-style: solid;
+  font-size: 20px;
+  border-width: 1px;
+  padding-left: 15px;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+
+  &:focus:not(:placeholder-shown) + label  {
+    color: var(--color-primary);
+  }
+
+  &:not(:focus):not(:placeholder-shown) + label  {
+    color: black;
+  }
+}

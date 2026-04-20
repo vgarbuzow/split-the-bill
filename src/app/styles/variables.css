@@ -1,0 +1,8 @@
+:root {
+  --color-primary: #0077b6;
+  --color-primary-dark: #005a87;
+  --color-accent: #0096c7;
+  --color-gray: #cecece;
+
+  --transition-duration: 0.2s;
+}

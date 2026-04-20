@@ -1,0 +1,68 @@
+.debts {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  padding: 20px 40px;
+  align-items: center;
+}
+
+.title {
+  align-self: center;
+  padding-bottom: 40px;
+  padding-top: 30px;
+  color: var(--color-primary-dark);
+}
+
+.newDebt {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 20px;
+
+  button {
+    width: 50%;
+  }
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 20px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.debtsList {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.debtsListHeader {
+  display: flex;
+  column-gap: 118px;
+  padding-bottom: 10px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.debtsListItem {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-block: 10px;
+  border-top: 1px solid var(--color-accent);
+  align-items: center;
+}
+
+.calculation {
+  margin-top: 20px;
+  width: 100%;
+  button {
+    width: 100%;
+  }
+}

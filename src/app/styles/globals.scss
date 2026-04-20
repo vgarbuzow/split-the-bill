@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+  padding: 50px 30px;
+  font-family: 'Inter', sans-serif;
+}
+
+input,
+label,
+button {
+  transition-duration: var(--transition-duration);
+}

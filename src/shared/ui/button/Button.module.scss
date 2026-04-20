@@ -1,0 +1,24 @@
+.primary {
+  color: white;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--color-accent);
+  }
+}
+
+.icon {
+  border: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
