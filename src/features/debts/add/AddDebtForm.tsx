@@ -7,7 +7,7 @@ const AddDebtForm = () => {
     <form className={styles.newDebt}>
       <Field id="name">Имя</Field>
       <Field id="amount">Сумма</Field>
-      <Button>Добавить</Button>
+      <Button className={styles.addDebtButton}>Добавить</Button>
     </form>
   );
 };

@@ -2,8 +2,8 @@
   color: white;
   background-color: var(--color-primary);
   border: none;
-  border-radius: 5px;
-  height: 40px;
+  border-radius: var(--radius-sm);
+  height: var(--control-height-md);
   text-transform: uppercase;
 
   &:hover {

@@ -4,11 +4,16 @@ import type { FC, ReactNode } from "react";
 type ButtonProps = {
   children: ReactNode;
   variant?: "primary" | "icon";
+  className?: string;
 };
 
-const Button: FC<ButtonProps> = ({ children, variant = "primary" }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  className,
+  variant = "primary",
+}) => {
   return (
-    <button className={`${styles[variant]}`} type="button">
+    <button className={`${className} ${styles[variant]}`} type="button">
       {children}
     </button>
   );

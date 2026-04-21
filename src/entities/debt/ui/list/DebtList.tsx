@@ -7,6 +7,7 @@ const DebtList = () => {
       <li className={styles.debtsListHeader}>
         <span>Имя</span>
         <span>Сумма</span>
+        <span></span>
       </li>
       <DebtItem />
       <DebtItem />

@@ -5,8 +5,8 @@ import styles from "./DebtItem.module.scss";
 const DebtItem = () => {
   return (
     <li className={styles.debtsListItem}>
-      <span>Вадим</span>
-      <span>10500</span>
+      <span>Вадимasssddddddddddddddd</span>
+      <span>10500sdsdsdsdsdsdsdsdsdsdsdsdsd</span>
       <Button variant="icon">
         <CloseIcon />
       </Button>
