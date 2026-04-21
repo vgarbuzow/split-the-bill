@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  column-gap: 20px;
+  column-gap: var(--space-4);
   margin: var(--space-4) 0;
 }

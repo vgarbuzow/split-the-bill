@@ -1,16 +1,18 @@
 import Button from "@/shared/ui/button";
 import CloseIcon from "@/shared/icons/close-icon";
-import styles from "./DebtItem.module.scss";
+import style from "./DebtItem.module.scss";
 
 const DebtItem = () => {
   return (
-    <li className={styles.debtsListItem}>
-      <span>Вадимasssddddddddddddddd</span>
-      <span>10500sdsdsdsdsdsdsdsdsdsdsdsdsd</span>
-      <Button variant="icon">
-        <CloseIcon />
-      </Button>
-    </li>
+    <>
+      <span className={style.item}>Вадим</span>
+      <span className={style.item}>10500</span>
+      <span className={style.deleteButtonContainer}>
+        <Button variant="icon" className={style.deleteButton}>
+          <CloseIcon />
+        </Button>
+      </span>
+    </>
   );
 };
 

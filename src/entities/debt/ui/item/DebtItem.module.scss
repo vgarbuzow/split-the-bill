@@ -1,9 +1,19 @@
-.debtsListItem {
-  list-style-type: none;
+.item {
+  overflow: hidden;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.deleteButtonContainer {
   display: flex;
-  justify-content: space-between;
-  column-gap: var(--space-3);
-  padding-block: var(--space-2);
-  border-top: var(--border-solid);
-  align-items: center;
+  justify-content: center;
+}
+
+.deleteButton {
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-accent);
+  }
 }

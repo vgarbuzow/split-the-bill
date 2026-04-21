@@ -1,11 +1,22 @@
-.debtsList {
-  padding-top: var(--space-4);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 100px));
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-3);
 }
 
-.debtsListHeader {
-  display: flex;
-  justify-content: space-between;
+.gridHeader {
   padding-bottom: var(--space-2);
   font-weight: var(--font-bold);
   color: var(--color-primary);
+}
+
+.divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background-color: var(--color-accent);
+  border: none;
+  margin: 0;
+  width: 100%;
 }

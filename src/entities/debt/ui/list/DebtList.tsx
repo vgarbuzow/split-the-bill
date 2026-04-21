@@ -3,16 +3,20 @@ import DebtItem from "@/entities/debt/ui/item";
 
 const DebtList = () => {
   return (
-    <ul className={styles.debtsList}>
-      <li className={styles.debtsListHeader}>
-        <span>Имя</span>
-        <span>Сумма</span>
-        <span></span>
-      </li>
+    <div className={styles.grid}>
+      <div className={styles.gridHeader}>Имя</div>
+      <div className={styles.gridHeader}>Сумма</div>
+      <div></div>
+
+      <hr className={styles.divider} />
       <DebtItem />
+
+      <hr className={styles.divider} />
       <DebtItem />
+
+      <hr className={styles.divider} />
       <DebtItem />
-    </ul>
+    </div>
   );
 };
 
