@@ -1,49 +1,36 @@
 .field {
   position: relative;
 
-  &:has(.input:not(:placeholder-shown)) .label {
-    scale: 0.7;
-    translate: -2.8em -2.6em;
-  }
-}
-
-.label {
-  position: absolute;
-  top: 50%;
-  left: var(--space-3);
-  color: var(--color-gray);
-  translate: 0 -50%;
-  font-size: var(--text-20);
-  width: 100%;
-  pointer-events: none;
-}
-
-.input {
-  height: var(--control-height-md);
-  border-radius: var(--radius-sm);
-  border-color: var(--color-gray);
-  border-style: solid;
-  font-size: var(--text-20);
-  border-width: 1px;
-  padding-left: var(--space-3);
-  width: 100%;
-
-  &:hover,
-  &:focus {
-    border-color: var(--color-primary);
+  input {
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    border-color: var(--color-gray);
+    border-style: solid;
     outline: none;
+
+    &:hover {
+      border-color: var(--color-accent);
+    }
+
+    &:focus {
+      border-color: var(--color-primary);
+    }
   }
 
-  &:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 1px var(--color-primary);
+  label {
+    position: absolute;
+    left: var(--space-2);
+    top: 10px;
+    color: var(--color-gray);
+    pointer-events: none;
+    background: white;
+    padding: 0 var(--space-1);
   }
 
-  &:focus:not(:placeholder-shown) + label  {
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: var(--text-1);
     color: var(--color-primary);
-  }
-
-  &:not(:focus):not(:placeholder-shown) + label  {
-    color: black;
   }
 }
