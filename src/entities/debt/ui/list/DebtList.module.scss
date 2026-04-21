@@ -1,0 +1,12 @@
+.debtsList {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.debtsListHeader {
+  display: flex;
+  column-gap: 118px;
+  padding-bottom: 10px;
+  font-weight: 600;
+  color: var(--color-primary);
+}

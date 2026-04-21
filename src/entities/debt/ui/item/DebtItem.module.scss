@@ -1,0 +1,9 @@
+.debtsListItem {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-block: 10px;
+  border-top: 1px solid var(--color-accent);
+  align-items: center;
+}

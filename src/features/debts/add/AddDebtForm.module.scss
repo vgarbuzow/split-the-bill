@@ -1,0 +1,12 @@
+.newDebt {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 20px;
+
+  button {
+    width: 50%;
+  }
+}
