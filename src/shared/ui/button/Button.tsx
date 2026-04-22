@@ -5,15 +5,21 @@ type ButtonProps = {
   children: ReactNode;
   variant?: "primary" | "icon";
   className?: string;
+  onClick?: () => void;
 };
 
 const Button: FC<ButtonProps> = ({
   children,
   className,
   variant = "primary",
+  onClick,
 }) => {
   return (
-    <button className={`${className} ${styles[variant]}`} type="button">
+    <button
+      className={`${className} ${styles[variant]}`}
+      onClick={onClick}
+      type="button"
+    >
       {children}
     </button>
   );

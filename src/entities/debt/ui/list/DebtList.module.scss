@@ -20,3 +20,10 @@
   margin: 0;
   width: 100%;
 }
+
+.emptyMessage {
+  padding-top: var(--space-4);
+  color: var(--color-gray);
+  font-size: var(--text-1);
+  text-align: center;
+}
