@@ -6,8 +6,12 @@
   height: var(--control-height-md);
   text-transform: uppercase;
 
-  &:hover {
+  &:hover, &:focus-visible {
     background-color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: none;
   }
 }
 

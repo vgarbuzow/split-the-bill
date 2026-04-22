@@ -13,7 +13,11 @@
 .deleteButton {
   color: var(--color-primary);
 
-  &:hover {
+  &:hover, &:focus-visible {
     color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-accent);
   }
 }

@@ -3,14 +3,16 @@
   --color-primary-dark: #005a87;
   --color-accent: #0096c7;
   --color-gray: #cecece;
+  --color-error: #bd0000;
 
   --font-bold: 700;
 
-  --text-1: 14px;
-  --text-2: 14px;
-  --text-3: 16px;
-  --text-4: 20px;
-  --text-5: 24px;
+  --text-1: 10px;
+  --text-2: 12px;
+  --text-3: 14px;
+  --text-4: 16px;
+  --text-5: 20px;
+  --text-6: 24px;
 
   --radius-sm: 6px;
   --radius-md: 12px;
