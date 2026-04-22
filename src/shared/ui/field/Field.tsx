@@ -1,23 +1,15 @@
 import styles from "./Field.module.scss";
-import { type ChangeEvent, type FC } from "react";
+import { type FC, type InputHTMLAttributes } from "react";
 
 type FieldProps = {
   id: string;
   label?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const Field: FC<FieldProps> = ({ id, label, onChange, value }) => {
+const Field: FC<FieldProps> = ({ id, label, ...inputProps }) => {
   return (
     <div className={styles.field}>
-      <input
-        className={styles.input}
-        id={id}
-        placeholder=""
-        onChange={onChange}
-        value={value}
-      />
+      <input className={styles.input} id={id} placeholder="" {...inputProps} />
       <label className={`${styles.label}`} htmlFor={id}>
         {label}
       </label>

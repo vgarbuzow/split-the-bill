@@ -1,7 +1,7 @@
-import styles from "./DebtsCalculator.module.scss";
+import styles from "./ExpensesCalculator.module.scss";
 import Button from "@/shared/ui/button";
 
-const DebtsCalculator = () => {
+const ExpensesCalculator = () => {
   return (
     <div className={styles.calculator}>
       <Button type="button">Рассчитать</Button>
@@ -9,4 +9,4 @@ const DebtsCalculator = () => {
   );
 };
 
-export default DebtsCalculator;
+export default ExpensesCalculator;

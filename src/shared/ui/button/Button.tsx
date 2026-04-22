@@ -6,7 +6,7 @@ type ButtonProps = {
   variant?: "primary" | "icon";
   className?: string;
   onClick?: () => void;
-  type: "button" | "submit" | "reset" | undefined;
+  type?: "button" | "submit" | "reset" | undefined;
 };
 
 const Button: FC<ButtonProps> = ({

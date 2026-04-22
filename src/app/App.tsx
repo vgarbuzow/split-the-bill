@@ -1,11 +1,11 @@
-import { DebtsProvider } from "@/entities/debt/model";
-import DebtPage from "@/pages/debt-page/DebtPage";
+import { ExpensesProvider } from "@/entities/expense/model";
+import ExpensesPage from "@/pages/expenses-page/ExpensesPage.tsx";
 
 const App = () => {
   return (
-    <DebtsProvider>
-      <DebtPage />
-    </DebtsProvider>
+    <ExpensesProvider>
+      <ExpensesPage />
+    </ExpensesProvider>
   );
 };
 
