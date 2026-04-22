@@ -1,13 +1,12 @@
 import styles from "./DebtsInfo.module.scss";
 
 const DebtsInfo = () => {
+  console.log("DebtsInfo");
   return (
-    <>
-      <div className={styles.debtsInfo}>
-        <span>Всего человек: 3</span>
-        <span>Общая сумма: 100500</span>
-      </div>
-    </>
+    <div className={styles.debtsInfo}>
+      <span>Всего человек: 3</span>
+      <span>Общая сумма: 100500</span>
+    </div>
   );
 };
 

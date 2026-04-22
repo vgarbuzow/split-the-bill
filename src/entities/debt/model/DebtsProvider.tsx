@@ -17,7 +17,7 @@ type DebtsProviderProps = {
 };
 
 const DebtsProvider: FC<DebtsProviderProps> = ({ children }) => {
-  const [debts, setDebts] = useState<Debt[]>([
+  const [debts, setDebts] = useState<Debt[]>(() => [
     { id: uuid(), name: "Вадим", amount: 100 },
     { id: uuid(), name: "Диана", amount: 200 },
     { id: uuid(), name: "Женя", amount: 300 },
@@ -31,13 +31,10 @@ const DebtsProvider: FC<DebtsProviderProps> = ({ children }) => {
     setDebts((debts) => debts.filter((debt) => debt.id !== id));
   }, []);
 
-  const apiValue = useMemo(
-    () => ({
-      addDebt,
-      removeDebt,
-    }),
-    [addDebt, removeDebt],
-  );
+  const apiValue = {
+    addDebt,
+    removeDebt,
+  };
 
   const stateValue = useMemo(
     () => ({

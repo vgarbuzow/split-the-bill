@@ -4,7 +4,7 @@ import Button from "@/shared/ui/button";
 const DebtsCalculator = () => {
   return (
     <div className={styles.calculator}>
-      <Button>Рассчитать</Button>
+      <Button type="button">Рассчитать</Button>
     </div>
   );
 };

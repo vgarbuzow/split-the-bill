@@ -6,19 +6,21 @@ type ButtonProps = {
   variant?: "primary" | "icon";
   className?: string;
   onClick?: () => void;
+  type: "button" | "submit" | "reset" | undefined;
 };
 
 const Button: FC<ButtonProps> = ({
   children,
   className,
-  variant = "primary",
   onClick,
+  variant = "primary",
+  type = "button",
 }) => {
   return (
     <button
       className={`${className} ${styles[variant]}`}
       onClick={onClick}
-      type="button"
+      type={type}
     >
       {children}
     </button>

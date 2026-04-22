@@ -1,10 +1,10 @@
 import styles from "./DebtPage.module.scss";
-import Divider from "@/shared/ui/divider";
 import AddDebtForm from "@/features/debts/add";
 import DebtList from "@/entities/debt/ui/list";
 import DebtsInfo from "@/features/debts/info";
 import DebtsCalculator from "@/features/debts/calculator";
 import { useDebtsState } from "@/entities/debt/model";
+import Divider from "@/shared/ui/divider";
 
 const DebtPage = () => {
   const { debts } = useDebtsState();
@@ -16,7 +16,6 @@ const DebtPage = () => {
       <AddDebtForm />
       <Divider />
       <DebtList />
-
       {hasDebts && (
         <>
           <Divider />
