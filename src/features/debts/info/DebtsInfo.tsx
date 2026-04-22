@@ -1,11 +1,17 @@
 import styles from "./DebtsInfo.module.scss";
+import { useDebtsState } from "@/entities/debt/model";
 
 const DebtsInfo = () => {
-  console.log("DebtsInfo");
+  const { debts } = useDebtsState();
+
+  const sum = debts.reduce((acc, debt) => {
+    return acc + debt.amount;
+  }, 0);
+
   return (
     <div className={styles.debtsInfo}>
-      <span>Всего человек: 3</span>
-      <span>Общая сумма: 100500</span>
+      <span>Всего долгов: {debts.length}</span>
+      <span>Общая сумма: {sum}</span>
     </div>
   );
 };
