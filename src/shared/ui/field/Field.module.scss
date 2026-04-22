@@ -1,14 +1,14 @@
 .field {
   position: relative;
+
 }
 
 .input {
-  padding: var(--space-2);
+  padding: var(--space-3);
   border-radius: var(--radius-sm);
   border-color: var(--color-gray);
   border-style: solid;
   outline: none;
-
   &:hover {
     border-color: var(--color-accent);
   }
@@ -25,7 +25,7 @@
 .label {
   position: absolute;
   left: var(--space-2);
-  top: 10px;
+  top: 14px;
   color: var(--color-gray);
   pointer-events: none;
   background: white;

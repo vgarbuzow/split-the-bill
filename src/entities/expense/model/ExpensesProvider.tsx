@@ -3,11 +3,12 @@ import {
   type FC,
   type ReactNode,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from "react";
 import type { Expense, ExpensesApi, ExpensesState } from "./types";
-import { v4 as uuid } from "uuid";
+import useExpensesLocalStorage from "@/entities/expense/model/useExpensesLocalStorage.ts";
 
 const ExpensesStateContext = createContext<ExpensesState | null>(null);
 const ExpensesApiContext = createContext<ExpensesApi | null>(null);
@@ -17,11 +18,8 @@ type ExpensesProviderProps = {
 };
 
 const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
-  const [expenses, setExpenses] = useState<Expense[]>(() => [
-    { id: uuid(), ownerName: "Вадим", amount: 100 },
-    { id: uuid(), ownerName: "Диана", amount: 200 },
-    { id: uuid(), ownerName: "Женя", amount: 300 },
-  ]);
+  const { savedExpenses, saveExpenses } = useExpensesLocalStorage();
+  const [expenses, setExpenses] = useState<Expense[]>(savedExpenses ?? []);
 
   const addExpense = useCallback((newExpense: Expense) => {
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
@@ -44,6 +42,10 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
     }),
     [expenses],
   );
+
+  useEffect(() => {
+    saveExpenses(expenses);
+  }, [expenses]);
 
   return (
     <ExpensesStateContext.Provider value={stateValue}>

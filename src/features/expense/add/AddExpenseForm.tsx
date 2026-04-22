@@ -3,12 +3,12 @@ import Field from "@/shared/ui/field";
 import Button from "@/shared/ui/button";
 import { useExpensesApi } from "@/entities/expense/model";
 import { v4 as uuid } from "uuid";
-import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
 
 type FormValues = {
   ownerName: string;
-  amount: number;
+  amount: number | "";
 };
 
 const AddExpenseForm = () => {
@@ -16,22 +16,32 @@ const AddExpenseForm = () => {
     register,
     handleSubmit,
     setFocus,
+    reset,
     formState: { errors },
-  } = useForm<FormValues>({ mode: "onBlur" });
+  } = useForm<FormValues>({ mode: "onChange", reValidateMode: "onChange" });
   const { addExpense } = useExpensesApi();
 
-  const onSubmit: SubmitHandler<FieldValues> = ({ ownerName, amount }) => {
+  const onSubmit: SubmitHandler<FormValues> = ({ ownerName, amount }) => {
+    if (!amount) return;
+
     const newExpense = {
       id: uuid(),
       ownerName,
       amount,
     };
     addExpense(newExpense);
+    reset({
+      ownerName: "",
+      amount: "",
+    });
+    setTimeout(() => {
+      setFocus("ownerName");
+    }, 0);
   };
 
   useEffect(() => {
     setFocus("ownerName");
-  }, [setFocus]);
+  }, []);
 
   return (
     <form className={styles.newExpenseForm} onSubmit={handleSubmit(onSubmit)}>

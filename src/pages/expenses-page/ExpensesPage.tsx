@@ -8,7 +8,7 @@ import Divider from "@/shared/ui/divider";
 
 const ExpensesPage = () => {
   const { expenses } = useExpensesState();
-  const hasExpenses = expenses.length > 0;
+  const hasExpenses = expenses?.length > 0;
 
   return (
     <div className={styles.expenses}>
