@@ -8,7 +8,7 @@ const ExpensesInfo = () => {
   return (
     <div className={styles.expensesInfo}>
       <span>Всего расходов: {expenses.length}</span>
-      <span>Общая сумма: {getTotalAmount()}</span>
+      <span>Общая сумма: {getTotalAmount()} ₽</span>
     </div>
   );
 };

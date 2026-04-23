@@ -81,7 +81,7 @@ const AddExpenseForm = () => {
 
       <Field
         id="amount"
-        label="Сумма"
+        label="Сумма ₽"
         type="number"
         autoComplete="off"
         error={errors?.amount?.message}

@@ -15,7 +15,7 @@ const ExpenseItem: FC<ExpenseItemProps> = ({ expense }) => {
   return (
     <>
       <span className={`${styles.item}`}>{expense.ownerName}</span>
-      <span className={`${styles.item}`}>{expense.amount}</span>
+      <span className={`${styles.item}`}>{expense.amount} ₽</span>
       <span className={`${styles.deleteButtonContainer}`}>
         <Button variant="icon" onClick={() => deleteById(expense.id)}>
           <CloseIcon />
