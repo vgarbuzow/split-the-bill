@@ -1,7 +1,7 @@
 import { useExpensesApi } from "@/entities/expense";
 import { v4 as uuid } from "uuid";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { type ChangeEvent, useEffect } from "react";
 import { Button, Field } from "@/shared/ui";
 import styles from "./AddExpenseForm.module.scss";
 
@@ -15,17 +15,28 @@ const AddExpenseForm = () => {
     register,
     handleSubmit,
     setFocus,
+    setValue,
     reset,
     formState: { errors },
   } = useForm<FormValues>({ mode: "onBlur", reValidateMode: "onBlur" });
   const { add, isExistsByName } = useExpensesApi();
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const filtered = e.target.value.replace(/[^A-Za-zА-Яа-яЁё\s-]/g, "");
+    setValue("ownerName", filtered, { shouldValidate: true });
+  };
+
+  const handleAmountChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const filtered = e.target.value.replace(/\D/g, "");
+    setValue("amount", Number.parseInt(filtered), { shouldValidate: true });
+  };
 
   const onSubmit: SubmitHandler<FormValues> = ({ ownerName, amount }) => {
     if (amount === "") return;
 
     const newExpense = {
       id: uuid(),
-      ownerName,
+      ownerName: ownerName.trim(),
       amount,
     };
 
@@ -53,17 +64,19 @@ const AddExpenseForm = () => {
         error={errors?.ownerName?.message}
         {...register("ownerName", {
           required: "Имя обязательно",
-          minLength: {
-            value: 2,
-            message: "Минимум 2 символа",
-          },
           validate: {
             checkExists: (ownerName) => {
               if (isExistsByName(ownerName))
                 return `Расход для пользователя '${ownerName}' уже существует`;
             },
+            minLength: (ownerName) => {
+              const trimValue = ownerName.trim();
+              if (trimValue.length < 2)
+                return `Имя должно содержать более 1 символа`;
+            },
           },
         })}
+        onChange={handleNameChange}
       />
 
       <Field
@@ -80,6 +93,7 @@ const AddExpenseForm = () => {
           },
           valueAsNumber: true,
         })}
+        onChange={handleAmountChange}
       />
       <Button className={styles.addExpenseButton} type="submit">
         Добавить

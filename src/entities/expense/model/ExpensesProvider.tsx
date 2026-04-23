@@ -21,6 +21,12 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
 
   const add = useCallback((newExpense: Expense) => {
     setExpenses((prevExpenses) => {
+      if (!newExpense.ownerName.trim())
+        throw new Error("Не заполнено поле 'ownerName'");
+
+      if (newExpense.amount < 0)
+        throw new Error("Сумма должна быть больше или равна 0");
+
       const existedExpense = prevExpenses.find(
         (expense) => expense.ownerName === newExpense.ownerName,
       );
