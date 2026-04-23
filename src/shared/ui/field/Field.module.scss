@@ -1,6 +1,5 @@
 .field {
   position: relative;
-
 }
 
 .input {
@@ -9,6 +8,8 @@
   border-color: var(--color-gray);
   border-style: solid;
   outline: none;
+  max-width: 400px;
+  align-self: center;
   &:hover {
     border-color: var(--color-accent);
   }
@@ -40,8 +41,9 @@
 }
 
 .error {
-  color: var(--color-error);
   display: block;
+  max-width: 200px;
+  color: var(--color-error);
   font-size: var(--text-2);
   padding-top: var(--space-1);
   padding-left: var(--space-1);

@@ -18,8 +18,8 @@ const AddExpenseForm = () => {
     setFocus,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({ mode: "onChange", reValidateMode: "onChange" });
-  const { addExpense } = useExpensesApi();
+  } = useForm<FormValues>({ mode: "onBlur", reValidateMode: "onBlur" });
+  const { add, isExistsByName } = useExpensesApi();
 
   const onSubmit: SubmitHandler<FormValues> = ({ ownerName, amount }) => {
     if (!amount) return;
@@ -29,11 +29,13 @@ const AddExpenseForm = () => {
       ownerName,
       amount,
     };
-    addExpense(newExpense);
+
+    add(newExpense);
     reset({
       ownerName: "",
       amount: "",
     });
+
     setTimeout(() => {
       setFocus("ownerName");
     }, 0);
@@ -55,6 +57,12 @@ const AddExpenseForm = () => {
           minLength: {
             value: 2,
             message: "Минимум 2 символа",
+          },
+          validate: {
+            checkExists: (ownerName) => {
+              if (isExistsByName(ownerName))
+                return `Расход для пользователя '${ownerName}' уже существует`;
+            },
           },
         })}
       />
