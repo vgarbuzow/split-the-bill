@@ -6,10 +6,10 @@ import {
   useMemo,
   useState,
 } from "react";
-import useExpensesLocalStorage from "@/entities/expense/model/hooks/useExpensesLocalStorage.ts";
-import type { Expense } from "@/entities/expense/model/types.ts";
-import ExpensesStateContext from "./contexts/ExpensesStateContext";
-import ExpensesApiContext from "./contexts/ExpensesApiContext";
+import useExpensesLocalStorage from "@/entities/expense/lib/hooks/useExpensesLocalStorage.ts";
+import type { Expense } from "./types";
+import { ExpensesApiContext } from "./useExpensesApi.ts";
+import { ExpensesStateContext } from "./useExpensesState.ts";
 
 type ExpensesProviderProps = {
   children: ReactNode;
@@ -46,12 +46,24 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
     [expenses],
   );
 
-  const apiValue = {
-    add,
-    deleteById,
-    isExistsByName,
-    deleteAll,
-  };
+  const getTotalAmount = useCallback(
+    () =>
+      expenses.reduce((acc, expense) => {
+        return acc + expense.amount;
+      }, 0),
+    [expenses],
+  );
+
+  const apiValue = useMemo(
+    () => ({
+      add,
+      deleteById,
+      isExistsByName,
+      deleteAll,
+      getTotalAmount,
+    }),
+    [add, deleteAll, deleteById, getTotalAmount, isExistsByName],
+  );
 
   const stateValue = useMemo(
     () => ({
@@ -65,11 +77,11 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
   }, [expenses]);
 
   return (
-    <ExpensesStateContext.Provider value={stateValue}>
-      <ExpensesApiContext.Provider value={apiValue}>
+    <ExpensesApiContext.Provider value={apiValue}>
+      <ExpensesStateContext.Provider value={stateValue}>
         {children}
-      </ExpensesApiContext.Provider>
-    </ExpensesStateContext.Provider>
+      </ExpensesStateContext.Provider>
+    </ExpensesApiContext.Provider>
   );
 };
 

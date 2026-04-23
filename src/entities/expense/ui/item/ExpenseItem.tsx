@@ -1,8 +1,9 @@
-import Button from "@/shared/ui/button";
-import CloseIcon from "@/shared/icons/close";
-import styles from "./ExpenseItem.module.scss";
-import { type Expense, useExpensesApi } from "@/entities/expense/model";
 import type { FC } from "react";
+import { useExpensesApi } from "@/entities/expense/model/useExpensesApi.ts";
+import type { Expense } from "@/entities/expense/model/types.ts";
+import { Button } from "@/shared/ui";
+import { CloseIcon } from "@/shared/icons";
+import styles from "./ExpenseItem.module.scss";
 
 type ExpenseItemProps = {
   expense: Expense;

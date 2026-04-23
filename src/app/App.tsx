@@ -1,10 +1,10 @@
-import ExpensesPage from "@/pages/expenses-page/ExpensesPage.tsx";
-import ExpensesProvider from "@/entities/expense/model";
+import BillPage from "@/pages/bill/BillPage.tsx";
+import { ExpensesProvider } from "@/entities/expense";
 
 const App = () => {
   return (
     <ExpensesProvider>
-      <ExpensesPage />
+      <BillPage />
     </ExpensesProvider>
   );
 };

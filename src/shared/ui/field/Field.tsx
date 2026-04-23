@@ -1,5 +1,5 @@
-import styles from "./Field.module.scss";
 import { type FC, type InputHTMLAttributes } from "react";
+import styles from "./Field.module.scss";
 
 type FieldProps = {
   id: string;

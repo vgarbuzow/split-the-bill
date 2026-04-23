@@ -1,10 +1,9 @@
-import styles from "./AddExpenseForm.module.scss";
-import Field from "@/shared/ui/field";
-import Button from "@/shared/ui/button";
-import { useExpensesApi } from "@/entities/expense/model";
+import { useExpensesApi } from "@/entities/expense";
 import { v4 as uuid } from "uuid";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { Button, Field } from "@/shared/ui";
+import styles from "./AddExpenseForm.module.scss";
 
 type FormValues = {
   ownerName: string;

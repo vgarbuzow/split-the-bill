@@ -1,12 +1,11 @@
-import styles from "./ExpensesPage.module.scss";
 import AddExpenseForm from "@/features/expense/add";
-import ExpensesList from "@/entities/expense/ui/list";
 import ExpensesInfo from "@/features/expense/info";
-import ExpensesCalculator from "@/features/expense/calculator";
-import { useExpensesState } from "@/entities/expense/model";
-import Divider from "@/shared/ui/divider";
+import DebtsCalculator from "@/features/debt/calculator";
+import { ExpensesList, useExpensesState } from "@/entities/expense";
+import { Divider } from "@/shared/ui";
+import styles from "./BillPage.module.scss";
 
-const ExpensesPage = () => {
+const BillPage = () => {
   const { expenses } = useExpensesState();
   const hasExpenses = expenses?.length > 0;
 
@@ -21,11 +20,11 @@ const ExpensesPage = () => {
           <Divider />
           <ExpensesInfo />
           <Divider />
-          <ExpensesCalculator />
+          <DebtsCalculator />
         </>
       )}
     </div>
   );
 };
 
-export default ExpensesPage;
+export default BillPage;

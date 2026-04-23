@@ -1,9 +1,12 @@
-import styles from "./ExpensesList.module.scss";
-import ExpenseItem from "@/entities/expense/ui/item";
-import { useExpensesApi, useExpensesState } from "@/entities/expense/model";
 import { Fragment } from "react";
-import BasketIcon from "@/shared/icons/basket/BasketIcon.tsx";
-import Button from "@/shared/ui/button";
+import {
+  ExpenseItem,
+  useExpensesApi,
+  useExpensesState,
+} from "@/entities/expense";
+import { Button } from "@/shared/ui";
+import { BasketIcon } from "@/shared/icons";
+import styles from "./ExpensesList.module.scss";
 
 const ExpensesList = () => {
   const { expenses } = useExpensesState();
