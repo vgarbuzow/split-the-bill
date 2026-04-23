@@ -1,6 +1,7 @@
 import type { Expense } from "@/entities/expense";
 import type { Debt } from "@/entities/debt";
 import _ from "lodash";
+import { v4 as uuid } from "uuid";
 
 const calculateDebts = (expenses: Expense[], total: number): Debt[] => {
   if (!expenses || expenses.length === 0) return [];
@@ -36,6 +37,7 @@ const calculateDebts = (expenses: Expense[], total: number): Debt[] => {
     maxExpense.amount -= resultCost;
 
     debts.push({
+      id: uuid(),
       from: minExpense.ownerName,
       amount: Math.round(resultCost),
       to: maxExpense.ownerName,

@@ -22,8 +22,8 @@ const DebtsCalculator = () => {
   return (
     <div className={styles.calculator}>
       <span className={styles.title}>Кто кому и сколько должен</span>
-      {debts.map((debt) => (
-        <span>{`${debt.from} -> ${debt.to} - ${debt.amount}`}</span>
+      {debts.map(({ id, from, to, amount }) => (
+        <span key={id}>{`${from} -> ${to} - ${amount}`}</span>
       ))}
     </div>
   );

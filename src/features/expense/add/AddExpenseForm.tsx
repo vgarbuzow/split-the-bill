@@ -21,7 +21,7 @@ const AddExpenseForm = () => {
   const { add, isExistsByName } = useExpensesApi();
 
   const onSubmit: SubmitHandler<FormValues> = ({ ownerName, amount }) => {
-    if (!amount) return;
+    if (amount === "") return;
 
     const newExpense = {
       id: uuid(),
@@ -75,8 +75,8 @@ const AddExpenseForm = () => {
         {...register("amount", {
           required: "Сумма обязательна",
           min: {
-            value: 1,
-            message: "Минимум 1",
+            value: 0,
+            message: "Минимум 0",
           },
           valueAsNumber: true,
         })}
