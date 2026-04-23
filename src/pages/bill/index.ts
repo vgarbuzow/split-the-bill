@@ -1,1 +1,1 @@
-export { default } from "./BillPage.tsx";
+export { default } from "./ui/BillPage.tsx";

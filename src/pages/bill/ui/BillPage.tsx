@@ -1,6 +1,6 @@
-import AddExpenseForm from "@/features/expense/add";
-import ExpensesInfo from "@/features/expense/info";
-import DebtsCalculator from "@/features/debt/calculator";
+import AddExpenseForm from "@/features/add-expense";
+import ExpensesInfo from "@/widgets/expense-info";
+import DebtsCalculator from "@/features/calculate-debts";
 import { ExpensesList, useExpensesState } from "@/entities/expense";
 import { Divider } from "@/shared/ui";
 import styles from "./BillPage.module.scss";
