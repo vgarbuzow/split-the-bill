@@ -1,9 +1,9 @@
 .newExpenseForm {
   display: flex;
   flex-direction: column;
-  row-gap: var(--space-5);
   align-items: center;
   margin-bottom: var(--space-4);
+  row-gap: var(--space-7);
 }
 
 .addExpenseButton {

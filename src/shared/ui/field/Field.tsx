@@ -11,7 +11,7 @@ const Field: FC<FieldProps> = ({ id, label, error, ...inputProps }) => {
   return (
     <div className={styles.field}>
       <input
-        className={`${styles.input} ${error && styles.inputError}`}
+        className={`${styles.input} ${error ? styles.inputError : ""}`}
         id={id}
         placeholder=""
         {...inputProps}
@@ -19,7 +19,7 @@ const Field: FC<FieldProps> = ({ id, label, error, ...inputProps }) => {
       <label className={`${styles.label}`} htmlFor={id}>
         {label}
       </label>
-      {error && <span className={styles.error}>{error}</span>}
+      <span className={styles.error}>{error}</span>
     </div>
   );
 };
