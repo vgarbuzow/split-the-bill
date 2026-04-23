@@ -1,5 +1,5 @@
-import { ExpensesProvider } from "@/entities/expense/model";
 import ExpensesPage from "@/pages/expenses-page/ExpensesPage.tsx";
+import ExpensesProvider from "@/entities/expense/model";
 
 const App = () => {
   return (

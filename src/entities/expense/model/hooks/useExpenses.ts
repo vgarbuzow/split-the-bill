@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import type { ExpensesApi, ExpensesState } from "./types";
-import {
-  ExpensesApiContext,
-  ExpensesStateContext,
-} from "./ExpensesProvider.tsx";
+import ExpensesStateContext, {
+  type ExpensesState,
+} from "@/entities/expense/model/contexts/ExpensesStateContext.ts";
+import ExpensesApiContext, {
+  type ExpensesApi,
+} from "@/entities/expense/model/contexts/ExpensesApiContext.ts";
 
 export const useExpensesState = (): ExpensesState => {
   const context = useContext(ExpensesStateContext);

@@ -10,11 +10,12 @@ type ExpenseItemProps = {
 
 const ExpenseItem: FC<ExpenseItemProps> = ({ expense }) => {
   const { deleteById } = useExpensesApi();
+
   return (
     <>
-      <span className={styles.item}>{expense.ownerName}</span>
-      <span className={styles.item}>{expense.amount}</span>
-      <span className={styles.deleteButtonContainer}>
+      <span className={`${styles.item}`}>{expense.ownerName}</span>
+      <span className={`${styles.item}`}>{expense.amount}</span>
+      <span className={`${styles.deleteButtonContainer}`}>
         <Button variant="icon" onClick={() => deleteById(expense.id)}>
           <CloseIcon />
         </Button>

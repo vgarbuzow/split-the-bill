@@ -1,5 +1,4 @@
 import {
-  createContext,
   type FC,
   type ReactNode,
   useCallback,
@@ -7,11 +6,10 @@ import {
   useMemo,
   useState,
 } from "react";
-import type { Expense, ExpensesApi, ExpensesState } from "./types";
-import useExpensesLocalStorage from "@/entities/expense/model/useExpensesLocalStorage.ts";
-
-const ExpensesStateContext = createContext<ExpensesState | null>(null);
-const ExpensesApiContext = createContext<ExpensesApi | null>(null);
+import useExpensesLocalStorage from "@/entities/expense/model/hooks/useExpensesLocalStorage.ts";
+import type { Expense } from "@/entities/expense/model/types.ts";
+import ExpensesStateContext from "./contexts/ExpensesStateContext";
+import ExpensesApiContext from "./contexts/ExpensesApiContext";
 
 type ExpensesProviderProps = {
   children: ReactNode;
@@ -43,9 +41,8 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
   const deleteAll = useCallback(() => setExpenses([]), []);
 
   const isExistsByName = useCallback(
-    (ownerName: string) => {
-      return expenses.some((expense) => expense.ownerName === ownerName);
-    },
+    (ownerName: string) =>
+      expenses.some((expense) => expense.ownerName === ownerName),
     [expenses],
   );
 
@@ -76,4 +73,4 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
   );
 };
 
-export { ExpensesProvider, ExpensesApiContext, ExpensesStateContext };
+export default ExpensesProvider;
