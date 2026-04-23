@@ -13,9 +13,20 @@ const DebtsCalculator = () => {
   }, [expenses, getTotalAmount]);
 
   if (!debts || debts.length === 0) {
-    return <span>Недостаточно данных для расчета</span>;
+    return (
+      <span className={styles.emptyDebts}>
+        Для расчета добавтье еще одного человека
+      </span>
+    );
   }
-  return <div className={styles.calculator}></div>;
+  return (
+    <div className={styles.calculator}>
+      <span className={styles.title}>Кто кому и сколько должен</span>
+      {debts.map((debt) => (
+        <span>{`${debt.from} -> ${debt.to} - ${debt.amount}`}</span>
+      ))}
+    </div>
+  );
 };
 
 export default DebtsCalculator;

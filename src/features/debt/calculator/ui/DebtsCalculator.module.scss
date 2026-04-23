@@ -3,4 +3,22 @@
   flex-direction: column;
   margin-block: var(--space-4);
   align-items: center;
+  row-gap: var(--space-1);
+}
+
+.emptyDebts {
+  text-align: center;
+  align-self: center;
+  color: var(--color-gray);
+  max-width: var(--text-hint-max-heignt);
+  font-size: var(--text-3);
+}
+
+.title{
+  text-align: center;
+  align-self: center;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-weight: var(--font-bold);
+  padding-bottom: var(--space-3);
 }

@@ -37,11 +37,12 @@ const calculateDebts = (expenses: Expense[], total: number): Debt[] => {
 
     debts.push({
       from: minExpense.ownerName,
-      amount: resultCost,
+      amount: Math.round(resultCost),
       to: maxExpense.ownerName,
     });
   } while (hasSignificantDifference);
 
+  debts.sort((a, b) => a.from.localeCompare(b.from));
   return debts;
 };
 
