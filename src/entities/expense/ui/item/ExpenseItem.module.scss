@@ -9,15 +9,3 @@
   display: flex;
   justify-content: center;
 }
-
-.deleteButton {
-  color: var(--color-primary);
-
-  &:hover, &:focus-visible {
-    color: var(--color-accent);
-  }
-
-  &:focus-visible {
-    outline-color: var(--color-accent);
-  }
-}

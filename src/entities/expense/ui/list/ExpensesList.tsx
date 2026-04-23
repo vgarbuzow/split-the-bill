@@ -1,10 +1,13 @@
 import styles from "./ExpensesList.module.scss";
 import ExpenseItem from "@/entities/expense/ui/item";
-import { useExpensesState } from "@/entities/expense/model";
+import { useExpensesApi, useExpensesState } from "@/entities/expense/model";
 import { Fragment } from "react";
+import BasketIcon from "@/shared/icons/basket/BasketIcon.tsx";
+import Button from "@/shared/ui/button";
 
 const ExpensesList = () => {
   const { expenses } = useExpensesState();
+  const { deleteAll } = useExpensesApi();
   const hasExpenses = expenses?.length > 0;
 
   if (!hasExpenses) {
@@ -17,9 +20,13 @@ const ExpensesList = () => {
 
   return (
     <div className={styles.grid}>
-      <div className={styles.gridHeader}>Имя</div>
-      <div className={styles.gridHeader}>Сумма</div>
-      <div></div>
+      <span className={styles.gridHeader}>Имя</span>
+      <span className={styles.gridHeader}>Сумма</span>
+      <span className={styles.deleteAllButtonContainer}>
+        <Button variant="icon" onClick={deleteAll}>
+          <BasketIcon />
+        </Button>
+      </span>
 
       {expenses.map((expense) => (
         <Fragment key={expense.id}>

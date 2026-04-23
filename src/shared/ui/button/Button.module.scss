@@ -20,4 +20,13 @@
   background-color: white;
   display: flex;
   align-items: center;
+  color: var(--color-primary);
+
+  &:hover, &:focus-visible {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-accent);
+  }
 }

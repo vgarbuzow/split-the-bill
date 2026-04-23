@@ -1,6 +1,6 @@
 import Button from "@/shared/ui/button";
-import CloseIcon from "@/shared/icons/close-icon";
-import style from "./ExpenseItem.module.scss";
+import CloseIcon from "@/shared/icons/close";
+import styles from "./ExpenseItem.module.scss";
 import { type Expense, useExpensesApi } from "@/entities/expense/model";
 import type { FC } from "react";
 
@@ -9,17 +9,13 @@ type ExpenseItemProps = {
 };
 
 const ExpenseItem: FC<ExpenseItemProps> = ({ expense }) => {
-  const { remove } = useExpensesApi();
+  const { deleteById } = useExpensesApi();
   return (
     <>
-      <span className={style.item}>{expense.ownerName}</span>
-      <span className={style.item}>{expense.amount}</span>
-      <span className={style.deleteButtonContainer}>
-        <Button
-          variant="icon"
-          className={style.deleteButton}
-          onClick={() => remove(expense.id)}
-        >
+      <span className={styles.item}>{expense.ownerName}</span>
+      <span className={styles.item}>{expense.amount}</span>
+      <span className={styles.deleteButtonContainer}>
+        <Button variant="icon" onClick={() => deleteById(expense.id)}>
           <CloseIcon />
         </Button>
       </span>

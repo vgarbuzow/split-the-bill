@@ -10,6 +10,7 @@ export type ExpensesState = {
 
 export type ExpensesApi = {
   add: (expense: Expense) => void;
-  remove: (id: string) => void;
+  deleteById: (id: string) => void;
   isExistsByName: (ownerName: string) => boolean;
+  deleteAll: () => void;
 };

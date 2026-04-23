@@ -34,11 +34,13 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
     });
   }, []);
 
-  const remove = useCallback((id: string) => {
+  const deleteById = useCallback((id: string) => {
     setExpenses((prevExpenses) =>
       prevExpenses.filter((expense) => expense.id !== id),
     );
   }, []);
+
+  const deleteAll = useCallback(() => setExpenses([]), []);
 
   const isExistsByName = useCallback(
     (ownerName: string) => {
@@ -49,8 +51,9 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
 
   const apiValue = {
     add,
-    remove,
+    deleteById,
     isExistsByName,
+    deleteAll,
   };
 
   const stateValue = useMemo(
