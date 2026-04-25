@@ -2,8 +2,8 @@ import ExpensesInfo from "@/widgets/expense-info";
 import DebtsCalculator from "@/features/calculate-debts";
 import { useExpensesState } from "@/entities/expense";
 import { Divider } from "@/shared/ui";
-import styles from "./BillPage.module.scss";
 import ExpensesList from "@/widgets/expense-list";
+import styles from "./BillPage.module.scss";
 
 const BillPage = () => {
   const { expenses } = useExpensesState();

@@ -1,29 +1,34 @@
 import { type Expense, useExpensesApi } from "@/entities/expense";
-import { v4 as uuid } from "uuid";
-import { type SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { type ChangeEvent, type FC, useEffect } from "react";
 import { Button, Input } from "@/shared/ui";
 import styles from "./ExpenseItemForm.module.scss";
-import ConfirmIcon from "../../icons/confirm/ConfirmIcon.tsx";
+import { ConfirmIcon } from "@/shared/icons";
 
 type ExpenseItemFormProps = {
   expense?: Expense;
+  onSubmitExpense: (data: ExpenseItemFormValues) => void;
+  resetAfterSubmit?: boolean;
 };
 
-type FormValues = {
+export type ExpenseItemFormValues = {
   ownerName: string;
   amount: number | "";
 };
 
-const ExpenseItemForm: FC<ExpenseItemFormProps> = ({ expense }) => {
+const ExpenseItemForm: FC<ExpenseItemFormProps> = ({
+  expense,
+  onSubmitExpense,
+  resetAfterSubmit,
+}) => {
   const {
     register,
     handleSubmit,
+    reset,
     setFocus,
     setValue,
-    reset,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<ExpenseItemFormValues>({
     mode: "onBlur",
     reValidateMode: "onBlur",
     defaultValues: {
@@ -32,7 +37,7 @@ const ExpenseItemForm: FC<ExpenseItemFormProps> = ({ expense }) => {
     },
   });
 
-  const { add, isExistsByName } = useExpensesApi();
+  const { isExistsByName } = useExpensesApi();
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     const filtered = e.target.value.replace(/[^A-Za-zА-Яа-яЁё\s-]/g, "");
@@ -44,29 +49,15 @@ const ExpenseItemForm: FC<ExpenseItemFormProps> = ({ expense }) => {
     setValue("amount", Number.parseInt(filtered), { shouldValidate: true });
   };
 
-  const onSubmit: SubmitHandler<FormValues> = ({ ownerName, amount }) => {
-    if (amount === "") return;
-
-    const newExpense = {
-      id: uuid(),
-      ownerName: ownerName.trim(),
-      amount,
-    };
-
-    add(newExpense);
-    reset({
-      ownerName: "",
-      amount: "",
-    });
-
-    setTimeout(() => {
-      setFocus("ownerName");
-    }, 0);
+  const onSubmit = (data: ExpenseItemFormValues) => {
+    onSubmitExpense(data);
+    if (resetAfterSubmit) reset({ ownerName: "", amount: "" });
+    queueMicrotask(() => setFocus("ownerName"));
   };
 
   useEffect(() => {
     setFocus("ownerName");
-  }, []);
+  }, [setFocus]);
 
   return (
     <form className={styles.newExpenseForm} onSubmit={handleSubmit(onSubmit)}>
@@ -79,7 +70,7 @@ const ExpenseItemForm: FC<ExpenseItemFormProps> = ({ expense }) => {
           required: "Имя обязательно",
           validate: {
             checkExists: (ownerName) => {
-              if (isExistsByName(ownerName))
+              if (isExistsByName(ownerName, expense?.id))
                 return `Расход для пользователя '${ownerName}' уже существует`;
             },
             minLength: (ownerName) => {

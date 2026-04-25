@@ -1,10 +1,12 @@
 import { Fragment, useState } from "react";
+//TODO: Унести в действия deleteAll
 import { useExpensesApi, useExpensesState } from "@/entities/expense";
 import { Button } from "@/shared/ui";
 import { BasketIcon } from "@/shared/icons";
 import styles from "./ExpensesList.module.scss";
 import ExpenseItem from "@/widgets/expense-item";
-import ExpenseItemForm from "@/shared/ui/expense-item-form/ExpenseItemForm.tsx";
+import AddExpenseForm from "@/features/add-expense";
+import EditExpenseForm from "@/features/edit-expense";
 
 const ExpensesList = () => {
   const { expenses } = useExpensesState();
@@ -27,7 +29,10 @@ const ExpensesList = () => {
         <Fragment key={expense.id}>
           <hr className={styles.divider} />
           {currentEditExpenseId === expense.id ? (
-            <ExpenseItemForm expense={expense} />
+            <EditExpenseForm
+              expense={expense}
+              setCurrentEditExpenseId={setCurrentEditExpenseId}
+            />
           ) : (
             <ExpenseItem
               expense={expense}
@@ -36,8 +41,13 @@ const ExpensesList = () => {
           )}
         </Fragment>
       ))}
-      <hr className={styles.divider} />
-      {!currentEditExpenseId && <ExpenseItemForm />}
+
+      {!currentEditExpenseId && (
+        <>
+          <hr className={styles.divider} />
+          <AddExpenseForm />
+        </>
+      )}
     </div>
   );
 };

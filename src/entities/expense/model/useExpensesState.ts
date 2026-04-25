@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { Expense } from "@/entities/expense/model/types.ts";
+import type { Expense } from "./types.ts";
 
 export type ExpensesState = {
   expenses: Expense[];

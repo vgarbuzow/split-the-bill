@@ -17,6 +17,7 @@ const ExpenseItem: FC<ExpenseItemProps> = ({
 }) => {
   const { deleteById } = useExpensesApi();
 
+  //TODO: Унести в действия
   return (
     <>
       <span className={`${styles.item}`}>{expense.ownerName}</span>
