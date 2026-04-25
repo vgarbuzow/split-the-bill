@@ -1,0 +1,42 @@
+.input {
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  border-color: var(--color-gray);
+  border-style: solid;
+  outline: none;
+  max-width: 150px;
+  width: 100%;
+  align-self: center;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.error {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  max-width: 200px;
+  color: var(--color-error);
+  font-size: var(--text-2);
+  padding: var(--space-1) 0 0 var(--space-1);
+}
+
+.error:not(:empty) {
+  opacity: 1;
+}
+
+.notEditable {
+  border: none;
+  padding: 0;
+}
+

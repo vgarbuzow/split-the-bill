@@ -6,10 +6,11 @@
   margin-bottom: var(--space-3);
 }
 
-.gridHeader {
+.header {
   padding-bottom: var(--space-2);
   font-weight: var(--font-bold);
   color: var(--color-primary);
+  display: contents;
 }
 
 .divider {
@@ -32,4 +33,10 @@
 .deleteAllButtonContainer {
   display: flex;
   justify-content: end;
+}
+
+.deleteButtonContainer {
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }

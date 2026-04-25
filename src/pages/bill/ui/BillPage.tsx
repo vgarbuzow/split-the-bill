@@ -1,9 +1,9 @@
-import AddExpenseForm from "@/features/add-expense";
 import ExpensesInfo from "@/widgets/expense-info";
 import DebtsCalculator from "@/features/calculate-debts";
-import { ExpensesList, useExpensesState } from "@/entities/expense";
+import { useExpensesState } from "@/entities/expense";
 import { Divider } from "@/shared/ui";
 import styles from "./BillPage.module.scss";
+import ExpensesList from "@/widgets/expense-list";
 
 const BillPage = () => {
   const { expenses } = useExpensesState();
@@ -12,8 +12,6 @@ const BillPage = () => {
   return (
     <div className={styles.expenses}>
       <h1 className={styles.title}>Поделим поровну</h1>
-      <AddExpenseForm />
-      <Divider />
       <ExpensesList />
       {hasExpenses && (
         <>

@@ -1,16 +1,21 @@
-import { useExpensesApi } from "@/entities/expense";
+import { type Expense, useExpensesApi } from "@/entities/expense";
 import { v4 as uuid } from "uuid";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { type ChangeEvent, useEffect } from "react";
-import { Button, Field } from "@/shared/ui";
-import styles from "./AddExpenseForm.module.scss";
+import { type ChangeEvent, type FC, useEffect } from "react";
+import { Button, Input } from "@/shared/ui";
+import styles from "./ExpenseItemForm.module.scss";
+import ConfirmIcon from "../../icons/confirm/ConfirmIcon.tsx";
+
+type ExpenseItemFormProps = {
+  expense?: Expense;
+};
 
 type FormValues = {
   ownerName: string;
   amount: number | "";
 };
 
-const AddExpenseForm = () => {
+const ExpenseItemForm: FC<ExpenseItemFormProps> = ({ expense }) => {
   const {
     register,
     handleSubmit,
@@ -18,7 +23,15 @@ const AddExpenseForm = () => {
     setValue,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({ mode: "onBlur", reValidateMode: "onBlur" });
+  } = useForm<FormValues>({
+    mode: "onBlur",
+    reValidateMode: "onBlur",
+    defaultValues: {
+      ownerName: expense?.ownerName,
+      amount: expense?.amount,
+    },
+  });
+
   const { add, isExistsByName } = useExpensesApi();
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -57,10 +70,10 @@ const AddExpenseForm = () => {
 
   return (
     <form className={styles.newExpenseForm} onSubmit={handleSubmit(onSubmit)}>
-      <Field
+      <Input
         id="ownerName"
-        label="Имя"
         autoComplete="off"
+        placeholder="Имя"
         error={errors?.ownerName?.message}
         {...register("ownerName", {
           required: "Имя обязательно",
@@ -79,11 +92,11 @@ const AddExpenseForm = () => {
         onChange={handleNameChange}
       />
 
-      <Field
+      <Input
         id="amount"
-        label="Сумма ₽"
         type="number"
         autoComplete="off"
+        placeholder="Сумма"
         error={errors?.amount?.message}
         {...register("amount", {
           required: "Сумма обязательна",
@@ -95,11 +108,11 @@ const AddExpenseForm = () => {
         })}
         onChange={handleAmountChange}
       />
-      <Button className={styles.addExpenseButton} type="submit">
-        Добавить
+      <Button type="submit" className={styles.addExpenseButton} variant="icon">
+        <ConfirmIcon />
       </Button>
     </form>
   );
 };
 
-export default AddExpenseForm;
+export default ExpenseItemForm;
