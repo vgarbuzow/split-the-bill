@@ -1,6 +1,7 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(max-content, 2fr));
+  grid-template-columns: repeat(3, minmax(7em, 130px));
+  width: fit-content;
   gap: var(--space-3);
   margin-top: var(--space-3);
   margin-bottom: var(--space-3);

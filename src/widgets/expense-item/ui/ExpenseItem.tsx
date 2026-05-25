@@ -22,7 +22,7 @@ const ExpenseItem: FC<ExpenseItemProps> = ({
     <>
       <span className={`${styles.item}`}>{expense.ownerName}</span>
       <span className={`${styles.item}`}>{expense.amount} ₽</span>
-      <span className={`${styles.deleteButtonContainer}`}>
+      <span className={`${styles.actionsContainer}`}>
         <Button
           variant="icon"
           onClick={() => setCurrentEditExpenseId(expense.id)}

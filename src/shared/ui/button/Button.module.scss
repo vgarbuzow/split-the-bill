@@ -17,16 +17,17 @@
 
 .icon {
   border: none;
-  background-color: white;
+  background-color: transparent;
   color: var(--color-primary);
-  padding: 0;
+  padding: var(--space-1);
+  line-height: 0;
 
   &:hover, &:focus-visible {
     color: var(--color-accent);
   }
 
   &:focus-visible {
-    outline-color: var(--color-accent);
+    outline: none;
   }
 }
 

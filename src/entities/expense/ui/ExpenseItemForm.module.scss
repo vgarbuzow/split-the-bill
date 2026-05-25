@@ -2,6 +2,12 @@
   display: contents;
 }
 
+.submitIcon {
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+}
+
 .vertical {
   display: flex;
   flex-direction: column;

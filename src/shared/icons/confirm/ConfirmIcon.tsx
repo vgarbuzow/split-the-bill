@@ -10,7 +10,7 @@ const ConfirmIcon = () => {
       <g clipPath="url(#clip0_105_1758)">
         <path
           d="M20 7.00024L10 17.0002L5 12.0002"
-          stroke="#292929"
+          stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2"
@@ -20,7 +20,7 @@ const ConfirmIcon = () => {
       <defs>
         <clipPath id="clip0_105_1758">
           <rect
-            fill="white"
+            fill="currentColor"
             height="24"
             transform="translate(0 0.000244141)"
             width="24"

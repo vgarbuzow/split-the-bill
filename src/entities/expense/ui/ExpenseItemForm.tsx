@@ -20,9 +20,11 @@ const ExpenseItemForm: FC<ExpenseItemFormProps> = (props) => {
       <form className={styles.inline} onSubmit={form.onSubmit}>
         <Input {...form.ownerNameProps} size="sm" />
         <Input {...form.amountProps} size="sm" />
-        <Button type="submit" variant="icon">
-          <ConfirmIcon />
-        </Button>
+        <div className={styles.submitIcon}>
+          <Button type="submit" variant="icon">
+            <ConfirmIcon />
+          </Button>
+        </div>
       </form>
     );
   }
@@ -32,7 +34,7 @@ const ExpenseItemForm: FC<ExpenseItemFormProps> = (props) => {
       <Input {...form.ownerNameProps} size="lg" />
       <Input {...form.amountProps} size="lg" />
       <Button type="submit" variant="primary" size="lg" fullWidth>
-        Сохранить
+        Добавить
       </Button>
     </form>
   );

@@ -21,8 +21,8 @@ export const useExpenseItemForm = ({
   const { isExistsByName } = useExpensesApi();
 
   const form = useForm<ExpenseItemFormValues>({
-    mode: "onBlur",
-    reValidateMode: "onBlur",
+    mode: "onSubmit",
+    reValidateMode: "onSubmit",
     defaultValues: {
       ownerName: expense?.ownerName ?? "",
       amount: expense?.amount ?? "",

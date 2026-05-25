@@ -5,21 +5,13 @@ type InputProps = {
   id: string;
   error?: string | undefined;
   size?: "sm" | "lg";
-  fullWidth?: boolean;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "size">;
 
-const Input: FC<InputProps> = ({
-  id,
-  error,
-  size = "sm",
-  fullWidth,
-  ...inputProps
-}) => {
-  const fullWidthClass = fullWidth ? styles.fullWidth : "";
+const Input: FC<InputProps> = ({ id, error, size = "sm", ...inputProps }) => {
   return (
-    <div className={fullWidthClass}>
+    <div>
       <input
-        className={`${styles.input} ${styles[size]} ${error ? styles.inputError : ""} ${fullWidthClass}`}
+        className={`${styles.input} ${styles[size]} ${error ? styles.inputError : ""}`}
         id={id}
         {...inputProps}
       />

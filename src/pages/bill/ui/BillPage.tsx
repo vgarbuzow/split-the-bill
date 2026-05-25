@@ -23,12 +23,12 @@ const BillPage = () => {
           <DebtsCalculator />
         </>
       ) : (
-        <>
+        <div className={styles.addExpenseContainer}>
           <span className={styles.addExpenseHint}>
             Добавьте расход для начала расчета
           </span>
           <AddExpenseForm layout="vertical" />
-        </>
+        </div>
       )}
     </div>
   );
