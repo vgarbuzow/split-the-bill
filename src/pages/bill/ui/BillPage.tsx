@@ -4,6 +4,7 @@ import { useExpensesState } from "@/entities/expense";
 import { Divider } from "@/shared/ui";
 import ExpensesList from "@/widgets/expense-list";
 import styles from "./BillPage.module.scss";
+import AddExpenseForm from "@/features/add-expense";
 
 const BillPage = () => {
   const { expenses } = useExpensesState();
@@ -12,13 +13,21 @@ const BillPage = () => {
   return (
     <div className={styles.expenses}>
       <h1 className={styles.title}>Поделим поровну</h1>
-      <ExpensesList />
-      {hasExpenses && (
+
+      {hasExpenses ? (
         <>
+          <ExpensesList />
           <Divider />
           <ExpensesInfo />
           <Divider />
           <DebtsCalculator />
+        </>
+      ) : (
+        <>
+          <span className={styles.addExpenseHint}>
+            Добавьте расход для начала расчета
+          </span>
+          <AddExpenseForm layout="vertical" />
         </>
       )}
     </div>

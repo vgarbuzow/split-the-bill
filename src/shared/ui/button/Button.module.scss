@@ -3,8 +3,8 @@
   background-color: var(--color-primary);
   border: none;
   border-radius: var(--radius-sm);
-  height: var(--control-height-md);
   text-transform: uppercase;
+  padding-inline: var(--space-4);
 
   &:hover, &:focus-visible {
     background-color: var(--color-accent);
@@ -18,8 +18,6 @@
 .icon {
   border: none;
   background-color: white;
-  display: flex;
-  align-items: center;
   color: var(--color-primary);
   padding: 0;
 
@@ -30,4 +28,16 @@
   &:focus-visible {
     outline-color: var(--color-accent);
   }
+}
+
+.md {
+  height: 30px;
+}
+
+.lg {
+  height: 40px;
+}
+
+.fullWidth {
+  width: 100%;
 }

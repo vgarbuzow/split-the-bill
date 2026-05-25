@@ -3,7 +3,7 @@
   flex-direction: column;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: var(--radius-md);
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-4) var(--space-6) var(--space-7) var(--space-6);
   min-width: 400px;
   @media (max-width: 400px) {
     min-width: 0;
@@ -15,4 +15,10 @@
   padding-top: var(--space-5);
   color: var(--color-primary-dark);
   text-align: center;
+}
+
+.addExpenseHint{
+  color: var(--color-gray);
+  text-align: center;
+  padding-bottom: var(--space-5);
 }

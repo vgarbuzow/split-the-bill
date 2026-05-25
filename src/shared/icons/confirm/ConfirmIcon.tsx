@@ -7,13 +7,13 @@ const ConfirmIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_105_1758)">
+      <g clipPath="url(#clip0_105_1758)">
         <path
           d="M20 7.00024L10 17.0002L5 12.0002"
           stroke="#292929"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
         />
       </g>
 

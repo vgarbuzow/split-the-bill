@@ -1,8 +1,13 @@
-import ExpenseItemForm, { useExpensesApi } from "@/entities/expense";
+import { ExpenseItemForm, useExpensesApi } from "@/entities/expense";
 import { v4 as uuid } from "uuid";
 import { type ExpenseItemFormValues } from "@/entities/expense";
+import type { FC } from "react";
 
-const AddExpenseForm = () => {
+type AddExpenseFormProps = {
+  layout?: "inline" | "vertical";
+};
+
+const AddExpenseForm: FC<AddExpenseFormProps> = ({ layout }) => {
   const { add } = useExpensesApi();
 
   const onSubmit = ({ ownerName, amount }: ExpenseItemFormValues) => {
@@ -17,7 +22,13 @@ const AddExpenseForm = () => {
     add(newExpense);
   };
 
-  return <ExpenseItemForm onSubmitExpense={onSubmit} resetAfterSubmit />;
+  return (
+    <ExpenseItemForm
+      onSubmitExpense={onSubmit}
+      resetAfterSubmit
+      layout={layout}
+    />
+  );
 };
 
 export default AddExpenseForm;

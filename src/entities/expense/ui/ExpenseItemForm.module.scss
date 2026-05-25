@@ -1,13 +1,10 @@
-.newExpenseForm {
+.inline {
   display: contents;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: var(--space-4);
-  row-gap: var(--space-7);
 }
 
-.addExpenseButton {
+.vertical {
   display: flex;
-  justify-content: end;
-  align-items: start;
+  flex-direction: column;
+  row-gap: var(--space-5);
+  align-items: center;
 }

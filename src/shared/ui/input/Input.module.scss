@@ -1,12 +1,9 @@
 .input {
-  padding: var(--space-1);
+  padding-left: var(--space-2);
   border-radius: var(--radius-sm);
   border-color: var(--color-gray);
   border-style: solid;
   outline: none;
-  max-width: 150px;
-  width: 100%;
-  align-self: center;
 
   &:hover {
     border-color: var(--color-accent);
@@ -22,10 +19,8 @@
 }
 
 .error {
-  display: block;
   opacity: 0;
   transition: opacity 0.4s ease;
-  max-width: 200px;
   color: var(--color-error);
   font-size: var(--text-2);
   padding: var(--space-1) 0 0 var(--space-1);
@@ -35,8 +30,15 @@
   opacity: 1;
 }
 
-.notEditable {
-  border: none;
-  padding: 0;
+.sm {
+  height: 30px;
+}
+
+.lg {
+  height: 40px;
+}
+
+.fullWidth {
+  width: 100%;
 }
 

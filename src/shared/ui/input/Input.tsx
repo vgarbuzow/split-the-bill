@@ -4,17 +4,26 @@ import styles from "./Input.module.scss";
 type InputProps = {
   id: string;
   error?: string | undefined;
-} & InputHTMLAttributes<HTMLInputElement>;
+  size?: "sm" | "lg";
+  fullWidth?: boolean;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "size">;
 
-const Input: FC<InputProps> = ({ id, error, ...inputProps }) => {
+const Input: FC<InputProps> = ({
+  id,
+  error,
+  size = "sm",
+  fullWidth,
+  ...inputProps
+}) => {
+  const fullWidthClass = fullWidth ? styles.fullWidth : "";
   return (
-    <div>
+    <div className={fullWidthClass}>
       <input
-        className={`${styles.input} ${error ? styles.inputError : ""}`}
+        className={`${styles.input} ${styles[size]} ${error ? styles.inputError : ""} ${fullWidthClass}`}
         id={id}
         {...inputProps}
       />
-      <span className={styles.error}>{error}</span>
+      {error ? <div className={styles.error}>{error}</div> : null}
     </div>
   );
 };
