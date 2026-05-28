@@ -4,21 +4,23 @@ import styles from "./Button.module.scss";
 type ButtonProps = {
   children: ReactNode;
   variant?: "primary" | "icon";
-  className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset" | undefined;
+  fullWidth?: boolean;
+  size?: "md" | "lg";
 };
 
 const Button: FC<ButtonProps> = ({
   children,
-  className,
   onClick,
   variant = "primary",
   type = "button",
+  size = "md",
+  fullWidth,
 }) => {
   return (
     <button
-      className={`${className} ${styles[variant]}`}
+      className={`${styles[variant]} ${fullWidth ? styles.fullWidth : ""} ${styles[size]}`}
       onClick={onClick}
       type={type}
     >

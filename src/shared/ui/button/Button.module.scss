@@ -3,8 +3,8 @@
   background-color: var(--color-primary);
   border: none;
   border-radius: var(--radius-sm);
-  height: var(--control-height-md);
   text-transform: uppercase;
+  padding-inline: var(--space-4);
 
   &:hover, &:focus-visible {
     background-color: var(--color-accent);
@@ -17,16 +17,28 @@
 
 .icon {
   border: none;
-  background-color: white;
-  display: flex;
-  align-items: center;
+  background-color: transparent;
   color: var(--color-primary);
+  padding: var(--space-1);
+  line-height: 0;
 
   &:hover, &:focus-visible {
     color: var(--color-accent);
   }
 
   &:focus-visible {
-    outline-color: var(--color-accent);
+    outline: none;
   }
+}
+
+.md {
+  height: 30px;
+}
+
+.lg {
+  height: 40px;
+}
+
+.fullWidth {
+  width: 100%;
 }

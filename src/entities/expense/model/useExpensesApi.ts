@@ -1,10 +1,11 @@
-import type { Expense } from "@/entities/expense/model/types.ts";
+import type { Expense } from "./types.ts";
 import { createContext, useContext } from "react";
 
 export type ExpensesApi = {
   add: (expense: Expense) => void;
+  edit: (expense: Expense) => void;
   deleteById: (id: string) => void;
-  isExistsByName: (ownerName: string) => boolean;
+  isExistsByName: (ownerName: string, id?: string) => boolean;
   deleteAll: () => void;
   getTotalAmount: () => number;
 };

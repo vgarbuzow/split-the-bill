@@ -1,15 +1,11 @@
-.field {
-  position: relative;
-}
-
 .input {
-  padding: var(--space-3);
+  padding-left: var(--space-2);
   border-radius: var(--radius-sm);
   border-color: var(--color-gray);
   border-style: solid;
   outline: none;
-  max-width: 400px;
-  align-self: center;
+  width: 100%;
+
   &:hover {
     border-color: var(--color-accent);
   }
@@ -23,35 +19,28 @@
   border-color: var(--color-error);
 }
 
-.label {
-  position: absolute;
-  left: var(--space-2);
-  top: 14px;
-  color: var(--color-gray);
-  pointer-events: none;
-  background: white;
-  padding: 0 var(--space-1);
-}
-
-.input:focus + .label,
-.input:not(:placeholder-shown) + .label {
-  top: -10px;
-  font-size: var(--text-3);
-  color: var(--color-primary);
-}
-
 .error {
   opacity: 0;
   transition: opacity 0.4s ease;
-  display: block;
-  max-width: 200px;
   color: var(--color-error);
   font-size: var(--text-2);
   padding: var(--space-1) 0 0 var(--space-1);
-  height: 12px;
+  word-wrap: break-word;
 }
 
 .error:not(:empty) {
   opacity: 1;
+}
+
+.sm {
+  height: 30px;
+}
+
+.lg {
+  height: 40px;
+}
+
+.fullWidth {
+  width: 100%;
 }
 

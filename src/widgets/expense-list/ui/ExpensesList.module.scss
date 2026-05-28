@@ -1,12 +1,15 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 100px));
+  grid-template-columns: repeat(3, minmax(7em, 130px));
+  width: fit-content;
   gap: var(--space-3);
   margin-top: var(--space-3);
   margin-bottom: var(--space-3);
+  align-self: center;
 }
 
-.gridHeader {
+.header {
+  display: contents;
   padding-bottom: var(--space-2);
   font-weight: var(--font-bold);
   color: var(--color-primary);
@@ -20,16 +23,13 @@
   margin: 0;
 }
 
-.emptyMessage {
-  padding-top: var(--space-4);
-  color: var(--color-gray);
-  font-size: var(--text-3);
-  text-align: center;
-  max-width: var(--text-hint-max-heignt);
-  align-self: center;
-}
-
 .deleteAllButtonContainer {
   display: flex;
   justify-content: end;
+}
+
+.addExpenseHint{
+  color: var(--color-gray);
+  text-align: center;
+  padding-bottom: var(--space-5);
 }

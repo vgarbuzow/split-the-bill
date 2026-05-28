@@ -1,0 +1,16 @@
+.inline {
+  display: contents;
+}
+
+.submitIcon {
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-5);
+  align-items: center;
+}

@@ -1,6 +1,6 @@
 import { useExpensesApi, useExpensesState } from "@/entities/expense";
 import { useMemo } from "react";
-import calculateDebts from "@/features/debt/calculator/lib/calculateDebts.ts";
+import calculateDebts from "../lib/calculateDebts.ts";
 import styles from "./DebtsCalculator.module.scss";
 
 const DebtsCalculator = () => {

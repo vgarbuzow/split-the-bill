@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import useExpensesLocalStorage from "@/entities/expense/lib/hooks/useExpensesLocalStorage.ts";
+import useExpensesLocalStorage from "../lib/hooks/useExpensesLocalStorage.ts";
 import type { Expense } from "./types";
 import { ExpensesApiContext } from "./useExpensesApi.ts";
 import { ExpensesStateContext } from "./useExpensesState.ts";
@@ -19,22 +19,43 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
   const { savedExpenses, saveExpenses } = useExpensesLocalStorage();
   const [expenses, setExpenses] = useState<Expense[]>(savedExpenses ?? []);
 
+  const validate = (expense: Expense, expenses: Expense[]) => {
+    if (!expense.ownerName.trim())
+      throw new Error("Не заполнено поле 'ownerName'");
+
+    if (expense.amount < 0)
+      throw new Error("Сумма должна быть больше или равна 0");
+
+    const existedExpense = expenses.find(
+      (expense) =>
+        expense.ownerName === expense.ownerName && expense.id !== expense.id,
+    );
+
+    if (existedExpense)
+      throw new Error("Расход для пользователя уже существует");
+  };
+
   const add = useCallback((newExpense: Expense) => {
     setExpenses((prevExpenses) => {
-      if (!newExpense.ownerName.trim())
-        throw new Error("Не заполнено поле 'ownerName'");
-
-      if (newExpense.amount < 0)
-        throw new Error("Сумма должна быть больше или равна 0");
-
-      const existedExpense = prevExpenses.find(
-        (expense) => expense.ownerName === newExpense.ownerName,
-      );
-
-      if (existedExpense)
-        throw new Error("Расход для пользователя уже существует");
+      validate(newExpense, prevExpenses);
 
       return [...prevExpenses, newExpense];
+    });
+  }, []);
+
+  const edit = useCallback((updatedExpense: Expense) => {
+    setExpenses((prevExpenses) => {
+      validate(updatedExpense, prevExpenses);
+
+      const expenseExists = prevExpenses.some(
+        (expense) => expense.id === updatedExpense.id,
+      );
+
+      if (!expenseExists) throw new Error("Расход не найден");
+
+      return prevExpenses.map((expense) =>
+        expense.id === updatedExpense.id ? updatedExpense : expense,
+      );
     });
   }, []);
 
@@ -47,8 +68,10 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
   const deleteAll = useCallback(() => setExpenses([]), []);
 
   const isExistsByName = useCallback(
-    (ownerName: string) =>
-      expenses.some((expense) => expense.ownerName === ownerName),
+    (ownerName: string, id?: string) =>
+      expenses.some(
+        (expense) => expense.id !== id && expense.ownerName === ownerName,
+      ),
     [expenses],
   );
 
@@ -63,12 +86,13 @@ const ExpensesProvider: FC<ExpensesProviderProps> = ({ children }) => {
   const apiValue = useMemo(
     () => ({
       add,
+      edit,
       deleteById,
       isExistsByName,
       deleteAll,
       getTotalAmount,
     }),
-    [add, deleteAll, deleteById, getTotalAmount, isExistsByName],
+    [add, edit, deleteAll, deleteById, getTotalAmount, isExistsByName],
   );
 
   const stateValue = useMemo(
